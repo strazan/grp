@@ -26,6 +26,7 @@ const InitiativeCard = ({ data }) => {
 
   url = url.length < 1 ? "" : url;
 
+<<<<<<< HEAD
   // useEffect(() => {
   //      data.policy_planning !== '1'
   //           ? (policy.current.style.opacity = '0.3')
@@ -40,6 +41,20 @@ const InitiativeCard = ({ data }) => {
   //           ? (idea.current.style.opacity = '0.3')
   //           : (idea.current.style.opacity = '1');
   // }, [data]);
+=======
+     let url_corona =
+          data.url_corona.indexOf('www.') > -1
+               ? data.url_corona.split('www.')[1]
+               : data.url_corona;
+     url_corona =
+          url_corona.indexOf('://') > -1
+               ? url_corona.split('://')[1]
+               : url_corona;
+     url_corona =
+          url_corona.indexOf('/') > -1 ? url_corona.split('/')[0] : url_corona;
+
+     url_corona = url_corona.length < 1 ? '' : url_corona;
+>>>>>>> 2eded32537c1e21a113c5194900bfb202a38e68e
 
   useEffect(() => {
     switch (data.main_geographic_focus) {
@@ -91,6 +106,7 @@ const InitiativeCard = ({ data }) => {
     });
   }, [data]);
 
+<<<<<<< HEAD
   const mainSponsor = data.main_sponsor;
   console.log(mainSponsor);
 
@@ -137,6 +153,91 @@ const InitiativeCard = ({ data }) => {
           {data.main_sponsor}
         </p>
         {/* <p>{data.summary}</p> */}
+=======
+     return (
+          <div
+               className={style.initiativeCard}
+               onClick={() => {
+                    setFlipped(!flipped);
+               }}
+          >
+               {/* // BACK CARD */}
+               <animated.div
+                    className={style.back}
+                    style={{
+                         opacity: opacity.interpolate((o) => 1 - o),
+                         transform,
+                    }}
+               >
+                    <h1 className={style.title}>{data.name}</h1>
+                    <a target="_blank" href={data.url}>
+                         {url}
+                    </a>
+                    <p>{data.summary}</p>
+                    <p>&#8594;</p>
+               </animated.div>
+               {/* FRONT CARD */}
+               <animated.div
+                    className={style.front}
+                    style={{
+                         opacity,
+                         transform: transform.interpolate(
+                              (t) => `${t} rotateY(180deg)`
+                         ),
+                    }}
+               >
+                    <h1 className={style.title}>{data.name}</h1>
+                    <div className={style.frontText}>
+                         <div className={style.frontLeft}>
+                              <a target="_blank" href={data.url}>
+                                   <span className={style.description}>
+                                        Website:{' '}
+                                   </span>
+                                   <br />
+                                   {url}
+                              </a>
+                              <p className={style.host}>
+                                   <span className={style.description}>
+                                        Host:{' '}
+                                   </span>
+                                   <br />
+                                   {data.host}
+                              </p>
+                              <p className={style.mainSponsor}>
+                                   <span className={style.description}>
+                                        Main Sponsor:{' '}
+                                   </span>
+                                   <br />
+                                   {data.main_sponsor}
+                              </p>
+                              {/* <p>{data.summary}</p> */}
+                         </div>
+                         <div className={style.frontRight}>
+                              {data.active_corona !== '0' ? (
+                                   <div>
+                                        <h3>Active on Covid-19</h3>
+                                        <p>
+                                             <span className={style.covid}>
+                                                  Response:{' '}
+                                             </span>
+                                             <br />
+                                             <a
+                                                  target="_blank"
+                                                  href={data.url_corona}
+                                             >
+                                                  {' '}
+                                                  Go to website
+                                             </a>
+                                        </p>
+                                   </div>
+                              ) : (
+                                   ''
+                              )}
+                         </div>
+                    </div>
+
+                    {/* <p className={style.readMore}>Read more &#8594;</p> */}
+>>>>>>> 2eded32537c1e21a113c5194900bfb202a38e68e
 
         <p className={style.readMore}>Read more &#8594;</p>
 
