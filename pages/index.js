@@ -7,6 +7,7 @@ import style from "./style/index.module.scss";
 import SearchBar from "../components/SearchBar";
 
 const IndexPage = () => {
+<<<<<<< HEAD
   return (
     <div>
       <Head />
@@ -18,6 +19,19 @@ const IndexPage = () => {
       </div>
     </div>
   );
+=======
+     return (
+          <div>
+               <Head />
+               <Header />
+               <div className={style.root}>
+                    <Intro />
+                    <Hero />
+                    <Initiatives />
+               </div>
+          </div>
+     );
+>>>>>>> 56d5529fc52dfbbf0ff55346c351df9cf1ea8d3b
 };
 
 export default IndexPage;
